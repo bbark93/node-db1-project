@@ -23,6 +23,7 @@ router.post(
     // DO YOUR MAGIC
     try {
       const newAccount = await Account.create(req.body)
+      newAccount.name = newAccount.name.trim()
       res.status(201).json(newAccount);
     } catch (err) {
       next(err);
